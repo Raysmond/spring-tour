@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <title>Title</title>
+</head>
+<body>
+  <h1>User <span th:text="${user.id}"></span></h1>
+
+  <hr/>
+
+  <form th:action="'/users/'+${user.id}" method="POST">
+    <input type="text" class="form-control" name="name" th:value="${user.name}" />
+    <br/>
+    <input class="btn btn-success" type="submit" value="Save" />
+  </form>
+
+  <a href="/users" class="btn btn-default">Return</a>
+</body>
+</html>

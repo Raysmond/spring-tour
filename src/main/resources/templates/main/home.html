@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/main.css" />
+  <title>Title</title>
+</head>
+<body>
+<div class="container">
+  <div>
+    <h1>User management</h1>
+
+    <div class="alert alert-info" th:if="${alert != null}" th:text="${alert}">
+
+    </div>
+
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Name</td>
+          <td>Operation</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr th:each="user : ${users}">
+          <td th:text="${user.id}"></td>
+          <td th:text="${user.name}"></td>
+          <td>
+            <a th:href="'/users/'+${user.id}+'/edit'" class="btn btn-success">Edit</a>
+            <a th:href="'/users/'+${user.id}" class="btn btn-info">View</a>
+            <form th:action="'/users/'+${user.id}+'/delete'" method="POST">
+              <input type="submit" value="Delete" class="btn btn-danger"/>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

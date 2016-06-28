@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * @author Raysmond<i@raysmond.com>
@@ -20,12 +23,15 @@ public class User implements Serializable {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
+  @NotNull
+  @Size(min = 5, max = 20)
+  @Column(name = "name", unique = true)
   private String name;
 
   public User() {
   }
 
-  public User(User user){
+  public User(User user) {
     this.id = user.getId();
     this.name = user.getName();
   }

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <title>Title</title>
+</head>
+<body>
+  <h1>User <span th:text="${user.id}"></span></h1>
+
+  <hr/>
+  Name: <span th:text="${user.name}"></span>
+  <br/>
+
+  <a th:href="'/users/'+${user.id}+'/edit'" class="btn btn-success">Edit</a>
+  | |
+  <a href="/users" class="btn btn-default">Return</a>
+</body>
+</html>
